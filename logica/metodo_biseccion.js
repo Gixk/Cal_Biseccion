@@ -53,7 +53,7 @@ function inserts_rows(func, value_X, error_value, counter=1){
 
     if (abs_error < error_value || estimated_error < error_value) {
         console.log(func_m);
-        documentss.getElementById('resul').innerHTML = value_m;
+        documents.getElementById('resul').innerHTML = value_m;
         new_row.style.backgroundColor = "rgba(0, 255, 0, 0.3)";
         return;
     } else{
