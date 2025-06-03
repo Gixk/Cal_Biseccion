@@ -1,125 +1,101 @@
+function bisection(func, a, b, tolerance, value_X = "") {
+  const maxIterations = 100;
+  let fa = math.evaluate(func, { x: a });
+  let fb = math.evaluate(func, { x: b });
 
-function bisection(func, a, b, error_value, value_X){
+  // Validación inicial
+  if (fa * fb >= 0) {
+    alert("No se encontró una raíz válida en el intervalo dado.");
+    return false;
+  }
 
-        if (func_a * func_b < 0) {
-            console.log("if");
-            insert_table(value_X);
-            insert_firts_row(func, a, b, error_value, value_X);
-            inserts_rows(func, value_X, error_value);
-        } else {
-            console.log("else");
-            alert("No se encontró ninguna raíz en el intervalo dado.");
-            return false;
-        }
+  // Limpiar resultado y tabla
+  document.getElementById("resul").innerHTML = "";
+  insertTable(value_X);
 
-}
-//----------------------------------------------------------------------------------------------------
-// This method is recursive
-function inserts_rows(func, value_X, error_value, counter=1){
-    new_row = document.getElementById('table').getElementsByTagName('tbody')[0].insertRow();
-    previous_row = document.getElementById('table').rows[counter];
+  let m, fm, error;
+  let i = 0;
 
-    var a, b, abs_error, estimated_error;
+  while (i < maxIterations) {
+    m = (a + b) / 2;
+    fa = math.evaluate(func, { x: a });
+    fb = math.evaluate(func, { x: b });
+    fm = math.evaluate(func, { x: m });
 
-    if (previous_row.cells[7].innerHTML > 0) {
-        a = previous_row.cells[3].innerHTML
-        b = previous_row.cells[2].innerHTML
+    // Calcular error
+    if (value_X === "") {
+      error = Math.abs((b - a) / 2);
     } else {
-        a = previous_row.cells[1].innerHTML
-        b = previous_row.cells[3].innerHTML
+      error = Math.abs(value_X - m);
     }
 
-     value_m = (Number(a) + Number(b))/2;
-     func_a = math.evaluate(func, {x:a});
-     func_b = math.evaluate(func, {x:b});
-     func_m = math.evaluate(func, {x:value_m});
+    // Insertar fila en la tabla
+    insertRow(i, a, b, m, fa, fb, fm, fa * fm, error, value_X);
 
-     if(value_X == ''){
-        estimated_error =  math.abs(((value_m-previous_row.cells[3].innerHTML)/value_m)*100)
-        first_row = [a, b, value_m, func_a , func_b, func_m, func_a * func_m, estimated_error];
+    // Criterio de parada
+    if (error < tolerance || fm === 0) {
+      document.getElementById("resul").innerHTML = m;
+      return true;
+    }
+
+    // Actualizar intervalo
+    if (fa * fm < 0) {
+      b = m;
     } else {
-        abs_error = math.abs(value_X - value_m);
-        first_row = [a, b, value_m, func_a , func_b, func_m, func_a * func_m, abs_error, abs_error/value_m];
+      a = m;
     }
 
-    
-    cell = new_row.insertCell(0);
-    cell.innerHTML = counter;
-    
-    for (let i = 0; i < first_row.length; i++) {
-        cell = new_row.insertCell(i+1);
-        cell.innerHTML = first_row[i];
-    }
+    i++;
+  }
 
-    if (abs_error < error_value || estimated_error < error_value) {
-        console.log(func_m);
-        documents.getElementById('resul').innerHTML = value_m;
-        new_row.style.backgroundColor = "rgba(0, 255, 0, 0.3)";
-        return;
-    } else{
-        inserts_rows(func, value_X, error_value, counter+1);
-    }
+  alert("Se alcanzó el número máximo de iteraciones.");
+  return false;
 }
 
-//---------------------------------------------------------------------------------------------------
+function insertTable(value_X) {
+  let html =
+    `<table id="table">
+      <thead>
+        <tr>
+          <th>Iteración</th>
+          <th>A</th>
+          <th>B</th>
+          <th>M</th>
+          <th>f(a)</th>
+          <th>f(b)</th>
+          <th>f(m)</th>
+          <th>f(a) * f(m)</th>` +
+    (value_X === ""
+      ? `<th>Error</th>`
+      : `<th>Error Absoluto</th><th>Error Relativo</th>`) +
+    `</tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>`;
 
-function insert_firts_row(func, a, b, error_value, value_X){
-
-    new_row = document.getElementById('table').getElementsByTagName('tbody')[0].insertRow();
-
-    value_m = (Number(a) + Number(b))/2;
-    func_a = math.evaluate(func, {x:a});
-    func_b = math.evaluate(func, {x:b});
-    func_m = math.evaluate(func, {x:value_m});
-
-    if(value_X == ''){
-        first_row = [a, b, value_m, func_a , func_b, func_m, func_a * func_m, ''];
-    } else {
-        abs_error = math.abs(value_X - value_m);
-        first_row = [a, b, value_m, func_a , func_b, func_m, func_a * func_m, abs_error, abs_error/value_m];
-    }
-
-    cell = new_row.insertCell(0);
-    cell.innerHTML = '0';
-
-    for (let i = 0; i < first_row.length; i++) {
-        cell = new_row.insertCell(i+1);
-        cell.innerHTML = first_row[i];
-    }
+  document.getElementById("resultado").innerHTML += html;
 }
-//--------------------------------------------------------------------------------------------
-function insert_table(value_X){
-    code_html =
-    '<table id="table">' +
-    '<thead>' +
-        '<tr>' +
-            '<th>Iteracion</th>' +
-            '<th>A</th>'+
-            '<th>B</th>'+
-            '<th>M</th>'+
-            '<th>f(a)</th>'+
-            '<th>f(b)</th>'+
-            '<th>f(m)</th>'+
-            '<th>f(a) * f(m)</th>';
-    
-    if (value_X == "") {
-        code_html += 
-            '<th>EE</th>'+
-        '</tr>'+
-    '</thead>'+
-    '<tbody>'+
-    '</tbody>'+
-    '</table>';
-    } else {
-        code_html += 
-            '<th>EA</th>'+
-            '<th>ER</th>'+
-        '</tr>'+
-    '</thead>'+
-    '<tbody>'+
-    '</tbody>'+
-    '</table>';
-    }
 
-    document.getElementById('resultado').innerHTML += code_html;
+function insertRow(iter, a, b, m, fa, fb, fm, fam, error, value_X) {
+  const tbody = document.getElementById("table").getElementsByTagName("tbody")[0];
+  const row = tbody.insertRow();
+
+  const data = [iter, a, b, m, fa, fb, fm, fam];
+
+  if (value_X === "") {
+    data.push(error);
+  } else {
+    const relativeError = error / Math.abs(m);
+    data.push(error, relativeError);
+  }
+
+  data.forEach((val) => {
+    const cell = row.insertCell();
+    cell.innerHTML = parseFloat(val).toPrecision(6);
+  });
+
+  if (error < 0.0001) {
+    row.style.backgroundColor = "rgba(0, 255, 0, 0.3)";
+  }
 }
