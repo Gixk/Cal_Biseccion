@@ -1,0 +1,236 @@
+#main {
+  background-image: url(../Recursos/fondo.png);
+}
+
+#infoCreador {
+  position: absolute; /* Posición absoluta para superponer el Toast */
+  top: 35%; /* Centramos el Toast verticalmente */
+  left: 35%; /* Centramos el Toast horizontalmente */
+  transform: translate(-50%, -50%); /* Ajustamos la posición para centrar */
+  z-index: 1050; /* Aseguramos que el Toast esté sobre otros elementos */
+  display: none; /* Oculto por defecto */
+  background-color: beige;
+}
+
+#toastInfo {
+  background-color: cornflowerblue;
+}
+#toastPri {
+  background-color: #ec6059;
+}
+#toastManual {
+  background-color: #1ecd4d;
+}
+#toastCreadores {
+  background-color: #f4f80a;
+}
+
+/* ajuste div dentro del cuerpo */
+#contenedorInformacion {
+  padding: 5px;
+  width: 800px;
+  max-width: 100%;
+  max-height: 550px;
+  overflow-y: scroll;
+}
+
+#menu {
+  border-right: 1.5px solid #f4f80a;
+}
+#menuManual {
+  border-right: 1.5px solid#1ecd4d;
+}
+#menuInfo {
+  border-right: 1.5px solid cornflowerblue;
+}
+#menuPrin {
+  border-right: 1.5px solid #ec6059;
+}
+
+#incon2 {
+  max-height: 100%;
+}
+
+/* div con input para los datos */
+#cuadroInputsFuncion,
+#cuadroInputsGrafica {
+  display: none;
+}
+
+#imagenCre {
+  width: 175px;
+  height: 220px;
+  border-radius: 50px;
+  margin: 3px;
+}
+
+.buttonList {
+  font-family: "Stardos Stencil", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration-line: none;
+  color: black;
+  width: 160px;
+  height: 35px;
+  margin: 6.5%;
+  border-radius: 10px;
+}
+
+#informacion:hover {
+  background-color: rgba(100, 148, 237, 0.55);
+}
+#manual:hover {
+  background-color: #47e772ab;
+}
+#creadores:hover {
+  background-color: #ffff0087;
+}
+#inicio:hover {
+  background-color: #ef9893;
+}
+
+#inicio,
+#informacion,
+#manual,
+#creadores,
+#btnCalFun,
+#btnCalGra,
+.btn {
+  font-family: "Overpass Mono", monospace;
+  font-size: 17px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#btnCalFun,
+#btnCalGra,
+.btn {
+  font-size: 20px;
+}
+.btn {
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+#inicio {
+  background-color: #ec6059;
+}
+
+#informacion {
+  background-color: cornflowerblue;
+}
+
+#manual {
+  background-color: #1ecd4d;
+}
+
+#creadores {
+  background-color: #f4f80a;
+}
+
+#buttonListCre {
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+#buttonListCre:hover + #infoCreador {
+  display: block;
+}
+
+/* estilo letras */
+/* titulos cuerpos */
+#scrollspyHeading1,
+#slogan {
+  font-family: "Comic Neue";
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* titulo principal */
+#scrollspyHeading2 {
+  font-family: "Audiowide", sans-serif;
+  font-weight: 350;
+  font-style: normal;
+  font-size: 100px;
+}
+
+/* texto parrafos */
+.text-start f-5 {
+  font-family: "Comic Neue", cursive;
+  font-weight: 500;
+  font-style: normal;
+}
+
+#buttonListCre {
+  font-family: "Shadows Into Light", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 28px;
+}
+
+.imagenUcr {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  right: 4%;
+  bottom: 6.6%;
+}
+
+#cli {
+  display: none;
+  color: black;
+  opacity: 100%;
+}
+
+.imagenUcr:hover {
+  #cli {
+    top: 50%;
+    position: absolute; /* Posición absoluta para superponer el Toast */
+    right: 28%; /* Centramos el Toast horizontalmente */
+    transform: translate(-50%, -50%);
+    display: block;
+    font-size: 20px;
+  }
+}
+
+#resultado {
+  display: none;
+  width: 95%;
+  max-height: 30%;
+  padding: 3px;
+  overflow: auto;
+  background-color: rgb(255, 252, 252, 0.8);
+}
+
+#table {
+  width: 100%; /* Ajustamos el ancho al 100% */
+  overflow-x: auto; /* Permitimos el desbordamiento horizontal */
+}
+
+#table {
+  max-width: 100%; /* Limitamos el ancho máximo */
+  border-collapse: collapse;
+  margin: 15px 0; /* Espacio entre las tablas */
+  font-size: 14px; /* Reducimos el tamaño de la fuente */
+  text-align: center; /* Centrar el texto */
+}
+th,
+td {
+  padding: 6px; /* Ajustamos el relleno de las celdas */
+  border: 1px solid #ddd; /* Borde de las celdas */
+  max-width: 60px; /* Limitamos el ancho máximo de las celdas */
+  max-height: 100px;
+  overflow: hidden; /* Ocultamos el desbordamiento */
+  text-overflow: ellipsis; /* Agregamos puntos suspensivos para el texto que se desborda */
+}
+th {
+  background-color: #ec6059; /* Fondo de los encabezados */
+  color: white;
+}

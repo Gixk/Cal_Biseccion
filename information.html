@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Play:wght@400;700&family=Shadows+Into+Light&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Overpass+Mono&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Contenedor de la pagina -->
+    <div
+      id="main"
+      class="container-fluid d-flex justify-content-center align-items-start flex-wrap p-3"
+    >
+      <!--!! Contenedor del menú -->
+      <div id="menuInfo" class="col-md-3 p-3 d-flex flex-column">
+        <div class="collapse show d-flex flex-column align-items-center">
+          <div id="buttonListCre" class="d-flex flex-column">
+            <img id="imagenCre" src="../Recursos/bolzano.png" alt="" />
+            Bohemo Bernard
+          </div>
+
+          <!-- **Despliega informacion del creador del metodo -->
+          <div
+            id="infoCreador"
+            class="toast"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div id="toastInfo" class="toast-header">
+              <strong class="me-auto">Bohemo Bernard Bolzano</strong>
+            </div>
+            <div class="toast-body">
+              Bernard Bolzano fue un matemático, lógico, filósofo y teólogo
+              nacido el 5 de octubre de 1781 en Praga (actual República Checa),
+              y falleció el 18 de diciembre de 1848. Es conocido por sus
+              contribuciones a diversos campos del conocimiento, incluyendo la
+              matemática, la lógica y la filosofía. Bolzano es especialmente
+              reconocido por sus trabajos en análisis matemático, donde
+              desarrolló teorías fundamentales en cálculo diferencial e
+              integral. También realizó contribuciones importantes en el campo
+              de la teoría de números y la geometría.
+            </div>
+          </div>
+
+          <!-- **Demás botones del menu -->
+          <a id="inicio" href="index.html" class="buttonList">Inicio</a>
+          <a id="informacion" href="information.html" class="buttonList"
+            >Información</a
+          >
+          <a id="manual" href="how_to_use.html" class="buttonList"
+            >Manual de uso</a
+          >
+          <a id="creadores" href="creadores.html" class="buttonList"
+            >¿Quiénes somos?</a
+          >
+        </div>
+      </div>
+
+      <!--!! Contenedor de cuerpo  -->
+      <div id="infocon2" class="col-10 col-md-9 p-4">
+        <div id="contenedorInformacion" class="col-10 col-md-9 p-4">
+          <h4 id="scrollspyHeading1">Un poco de historia.</h4>
+          <p class="text-start fs-5">
+            El método de bisección, también conocido como método de dicotomía,
+            método de división en mitades o método de intervalos, es una técnica
+            numérica utilizada para encontrar raíces de funciones continuas.
+            Este método se basa en el teorema del valor intermedio y tiene sus
+            orígenes en los trabajos matemáticos de la antigüedad, aunque no
+            está asociado con un único creador. <br> El concepto fundamental detrás
+            del método de bisección ha existido desde la antigüedad. El teorema
+            del valor intermedio, en el cual se basa este método, fue conocido
+            por matemáticos griegos como Eudoxo y posteriormente formalizado por
+            matemáticos como Bolzano en el siglo XIX. Sin embargo, la aplicación
+            sistemática del método de bisección como técnica numérica
+            probablemente se desarrolló de manera más formal con el avance de la
+            matemática numérica en el siglo XIX.
+          </p>
+          <h4 id="scrollspyHeading1">¿Qué es el método de bisección?</h4>
+          <p class="text-start fs-5">
+            El método de bisección es un algoritmo utilizado para encontrar las
+            raíces de una ecuación polinómica. Funciona dividiendo el intervalo
+            en el que se encuentra la raíz en mitades sucesivas hasta encontrar
+            la solución deseada.
+          </p>
+          <h4 id="scrollspyHeading1">¿En qué se basa?</h4>
+          <p class="text-start fs-5">
+            El método de bisección se basa en el teorema del valor intermedio
+            (TVI), que establece que toda función continua en un intervalo
+            cerrado toma todos los valores que se encuentran entre los valores
+            de los extremos del intervalo. Si una función (f(x)) es continua en
+            un intervalo ([a, b]) y (f(a)) y (f(b)) tienen signos opuestos,
+            entonces existe al menos una raíz en ese intervalo.
+          </p>
+          <h4 id="scrollspyHeading1">Funcionamiento.</h4>
+          <p class="text-start fs-5">
+            Este método funciona de la siguiente manera: <br />
+            1. Inicialmente, se verifica que (f(a)) y (f(b)) tengan signos
+            opuestos. Si no lo tienen, no hay una raíz en el intervalo. Seguido
+            de esto se define un intervalo [a, b] en el cual de encuentre la
+            raíz buscada. <br />
+            2. Luego, se calcula el valor intermedio del intervalo mediante la
+            formula (a+b)/2, a ese valor lo reconoceremos como ‘m’. <br />
+            3. Se calculan los valores f(a), f(b) y f(m). Siendo la fórmula para
+            calcular estos valores la misma función polinomial del problema.
+            <br />
+            4. Cuando el valor de f(m) sea 0, quiere decir que m es la raíz
+            buscada, sin embargo, mientras f(m) no sea cero, entonces habrá que
+            ir determinando subintervalos para aproximarse lo más posible al
+            valor de la raíz. <br />
+            5. Si f(a) y f(m) tienen signos diferentes, entonces la raíz buscada
+            se encuentra en el intervalo [a,m]. <br />
+            6. Si f(m) y f(b) tienen signos diferentes, entonces la raíz buscada
+            se encuentra en el intervalo [m,b]. Se redefine el intervalo como
+            ([a, m]) o ([m, b]) dependiendo del intervalo en el que ocurre un
+            cambio de signo. Se repite el proceso hasta alcanzar la precisión
+            deseada.
+          </p>
+          <h4 id="scrollspyHeading1">Convergencia</h4>
+          <p class="text-start fs-5">
+            La bisección converge linealmente, por lo que es un poco lento. Sin
+            embargo, se garantiza la convergencia si (f(a)) y (f(b)) tienen
+            distinto signo. Si existieran más de una raíz en el intervalo, el
+            método sigue siendo convergente pero no resulta tan fácil
+            caracterizar hacia qué raíz converge.
+          </p>
+        </div>
+      </div>
+    <!-- !ABAJO -->
+    <footer class="text-center align-items-center p-2 fixed-bottom bg-black text-white p-2">
+      <p>&copy; 2024 Método de Bisección. Todos los derechos reservados.</p>
+    </footer>
+    </div>
+    
+    <style>
+      @media screen and (max-width: 499px) {
+        #infoCreador {
+          position: absolute; /* Posición absoluta para superponer el Toast */
+          top: 50%; /* Centramos el Toast verticalmente */
+          left: 50%; /* Centramos el Toast horizontalmente */
+          transform: translate(-50%, -50%);
+          z-index: 1050; 
+          display: none;
+          background-color: beige;
+        }
+
+        #infocon2{
+          width: 100%;
+        }
+      }
+    </style>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
